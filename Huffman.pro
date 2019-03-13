@@ -25,7 +25,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        widget.cpp
+        widget.cpp \
+    huffman.cpp \
+    bool_array.cpp \
+    huffmantextfile.cpp \
+    coding.cpp \
+    decoding.cpp
 
 HEADERS += \
-        widget.h
+        widget.h \
+    huffman.h \
+    bool_array.h \
+    huffmantextfile.h \
+    coding.h \
+    decoding.h
