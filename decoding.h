@@ -1,28 +1,39 @@
-#ifndef DECODING_H
-#define DECODING_H
+#pragma once;
 
 #include <QWidget>
-#include <QVBoxLayout>
-//#include <QGridLayout>
+//#include <QVBoxLayout>
+#include <QGridLayout>
 #include <QPushButton>
-#include <QPlainTextEdit>
+#include <QTextEdit>
 #include <QToolButton>
 #include <QLineEdit>
 #include <QLabel>
+#include <QFileDialog>
+
+#include "huffmantextfile.h"
+
 
 class Decoding : public QWidget
 {
-    Q_OBJECT    
-    QPlainTextEdit* text;
+    Q_OBJECT
+    QGridLayout* mainLayout;
+    QTextEdit* text;
     QLabel* text_label;
     QPushButton* decode_button;
+    QGridLayout* right_layout;
+
+    QFont font;
+    //QLabel* file_name;
+    //QLineEdit* file_name_edit;
+    QPushButton* path_button;
+    QLabel* path;
 
 public:
     explicit Decoding(QWidget *parent = nullptr);
-
+    ~Decoding();
 signals:
 
 public slots:
+    void decode();
+    void open_folder();
 };
-
-#endif // DECODING_H

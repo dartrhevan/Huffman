@@ -11,9 +11,9 @@ class HuffmanTextFile
 {
 public:
     HuffmanTextFile() = delete;
-    static void write(const QString&, const QString&);
+    static void write(const QString& path, const QString& text);
     static QString read(const QString&);
-    void write_dict(std::ostream&, std::map<char, std::string>&);
+    static void write_dict(std::ostream&, const std::map<char, std::string> &);
 };
 
 #endif // HUFFMANTEXTFILE_H

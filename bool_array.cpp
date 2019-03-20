@@ -30,7 +30,7 @@ std::ostream& operator<<(std::ostream& os, const bool_array& ar)
 {
     auto ptr = ar.get_data_ptr();
     auto size = ar.size();
-    os << size << std::endl;
+    os << size;
     for (size_t i = 0; i < ar.get_int_size() * sizeof(int); ++i)
         os << ptr[i];
     return os;
@@ -38,13 +38,14 @@ std::ostream& operator<<(std::ostream& os, const bool_array& ar)
 
 std::istream& operator>> (std::istream& is, const bool_array& arr)
 {
-    auto ptr = new char[arr.get_int_size() * sizeof(int)];
-    for (size_t i = 0; i < arr.get_int_size() * sizeof(int); i++)
-        is >> ptr[i];
-    auto int_ptr = reinterpret_cast<int *>(ptr);
-    for (size_t i = 0; i < arr.get_int_size(); i++)
-        arr.get_int(i) = int_ptr[i];
-    delete[] ptr;
+    char* buf = new char[sizeof(int)];
+    for(auto i = 0; i < arr.get_int_size(); ++i)
+    {
+        is.read(buf, sizeof(int));// !!!read & get некорректно работают с некоторыми спецсимволами!!!!!
+        auto i1 = (reinterpret_cast<int*>(buf))[0];
+        arr.get_int(i) = i1;
+    }
+    delete[] buf;
     return is;
 }
 

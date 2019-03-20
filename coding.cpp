@@ -27,7 +27,8 @@ Coding::Coding(QWidget *parent) : QWidget(parent), mainLayout(new QGridLayout())
     right_layout->setRowStretch(2, 0);
     right_layout->setRowStretch(3, 0);
 
-
+    connect(encode_button, SIGNAL(clicked(bool)), this, SLOT(encode()));
+    connect(path_button, SIGNAL(clicked(bool)), this, SLOT(open_folder()));
 }
 
 Coding::~Coding()
@@ -54,10 +55,10 @@ Coding::~Coding()
 
 void Coding::encode()
 {
-
+    HuffmanTextFile::write(path->text(), text->document()->toRawText());
 }
 
 void Coding::open_folder()
 {
-
+    path->setText(QFileDialog::getSaveFileName(this, "Enter path to save file", file_name_edit->text(), ".huf"));
 }

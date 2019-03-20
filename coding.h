@@ -9,6 +9,9 @@
 #include <QToolButton>
 #include <QLineEdit>
 #include <QLabel>
+#include <QFileDialog>
+
+#include "huffmantextfile.h"
 
 
 class Coding : public QWidget
