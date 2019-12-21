@@ -1,4 +1,4 @@
-#include "decoding.h".h"
+#include "decoding.h"
 
 Decoding::Decoding(QWidget *parent) : QWidget(parent), mainLayout(new QGridLayout()), text(new QTextEdit()), text_label(new QLabel("Text")), decode_button(new QPushButton("Decode"))
   , right_layout(new QGridLayout()), font("Times new roman", 18),
@@ -53,11 +53,24 @@ Decoding::~Decoding()
     mainLayout = nullptr;
 }
 
+QString qdecode(const QString& path)
+{
+    //QByteArray data;// = qCompress(text->document()->toRawText().toUtf8(), text->document()->toRawText().length());
+    QFile f(path);
+    f.open(QIODevice::ReadOnly);
+    /*
+    QDataStream dstr(&f);
+    dstr >> data;*/
+    auto data = f.readAll();
+    f.close();
+    return QString(qUncompress(data).data());
+}
+
 void Decoding::decode()
 {
-    //text->document()->setPlainText(HuffmanTextFile::read(path->text()));
-    //HuffmanTextFile::write(path->text(), text->document()->toRawText());
-    text->setText(HuffmanTextFile::read(path->text()));
+    auto str = io_func::read(path->text().toStdString());
+    text->setText(QString::fromStdString(std::move(str)));
+    //text->setText(qdecode(path->text()));
 }
 
 void Decoding::open_folder()

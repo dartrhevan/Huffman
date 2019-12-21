@@ -1,4 +1,5 @@
-#pragma once;
+#ifndef DECODING
+#define DECODING
 
 #include <QWidget>
 //#include <QVBoxLayout>
@@ -10,7 +11,7 @@
 #include <QLabel>
 #include <QFileDialog>
 
-#include "huffmantextfile.h"
+#include "io_func.h"
 
 
 class Decoding : public QWidget
@@ -37,3 +38,5 @@ public slots:
     void decode();
     void open_folder();
 };
+
+#endif

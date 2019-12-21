@@ -1,5 +1,6 @@
 #include "huffmantextfile.h"
 
+
 void HuffmanTextFile::write(const QString& path, const QString& text)
 {
     auto code = Huffman::encode(std::move(text.toStdString()));
@@ -10,7 +11,7 @@ void HuffmanTextFile::write(const QString& path, const QString& text)
     for (auto c : text)
         coded_text += code[c.toLatin1()];
     bool_array arr(std::move(coded_text));
-    output << std::endl << arr;
+    output << " " << arr;
 }
 
 QString HuffmanTextFile::read(const QString& path)

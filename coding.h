@@ -1,5 +1,6 @@
-#ifndef CODING_H
-#define CODING_H
+#ifndef CODING
+#define CODING
+
 
 #include <QWidget>
 //#include <QVBoxLayout>
@@ -10,8 +11,14 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QFileDialog>
+#include <QDataStream>
+#include <QByteArray>
+#include <QFile>
+#include <QMessageBox>
+#include <QTextStream>
+#include <QProgressBar>
 
-#include "huffmantextfile.h"
+#include "io_func.h"
 
 
 class Coding : public QWidget
@@ -29,12 +36,15 @@ class Coding : public QWidget
     QPushButton* path_button;
     QLabel* path;
 
+    QPushButton* from_file;
+    //QProgressBar* progress;
 public:
     explicit Coding(QWidget *parent = nullptr);
     ~Coding();
 signals:
 
 public slots:
+    void from_file_onclick();
     void encode();
     void open_folder();
 };

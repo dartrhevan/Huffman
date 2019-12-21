@@ -28,14 +28,14 @@ SOURCES += \
         widget.cpp \
     huffman.cpp \
     bool_array.cpp \
-    huffmantextfile.cpp \
     coding.cpp \
-    decoding.cpp
+    decoding.cpp \
+    io_func.cpp
 
 HEADERS += \
         widget.h \
     huffman.h \
     bool_array.h \
-    huffmantextfile.h \
     coding.h \
-    decoding.h
+    decoding.h \
+    io_func.h
